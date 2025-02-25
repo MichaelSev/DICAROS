@@ -12,6 +12,14 @@ Here are some examples of evolutionary trajectories reconstructed using DICAROS:
     <img src="Trajectory_Examples\Battus_belusbutterfly.gif" alt="Evolutionary Trajectory 2" width="400">
 </div>
 
+<div style="display: flex; justify-content: center;">
+    <img src="Trajectory_Examples\Euryades_corethrus_tree.gif" alt="Evolutionary Trajectory 1" style="margin-right: 10px;" width="400">
+    <img src="Trajectory_Examples\Euryades_corethrusbutterfly.gif" alt="Evolutionary Trajectory 2" width="400">
+</div>
+
+
+The tree used, is a subsample from Kawahara et. al. 2023 (https://www.nature.com/articles/s41559-023-02041-9), 
+
 ## Introduction 
 
 This repository contains the code for the paper "DICAROS: Diffeomorphic Independent Contrasts for Ancestral Reconstruction of Shapes".
