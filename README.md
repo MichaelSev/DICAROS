@@ -13,8 +13,8 @@ Here are some examples of evolutionary trajectories reconstructed using DICAROS:
 </div>
 
 <div style="display: flex; justify-content: center;">
-    <img src="Trajectory_Examples\Papilio_gigon_tree" alt="Evolutionary Trajectory 1" style="margin-right: 10px;" width="400">
-    <img src="Trajectory_Examples\Papilio_gigonbutterfly" alt="Evolutionary Trajectory 2" width="400">
+    <img src="Trajectory_Examples\Papilio_gigon_tree.gif" alt="Evolutionary Trajectory 1" style="margin-right: 10px;" width="400">
+    <img src="Trajectory_Examples\Papilio_gigonbutterfly.gif" alt="Evolutionary Trajectory 2" width="400">
 </div>
 
 
