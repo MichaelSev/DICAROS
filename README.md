@@ -8,8 +8,8 @@ DOI: tbd
 Here are some examples of evolutionary trajectories reconstructed using DICAROS:
 
 <div style="display: flex; justify-content: center;">
-    <img src="Trajectory_Examples\Battus_belus_tree.gif" alt="Evolutionary Trajectory 1" style="margin-right: 10px;">
-    <img src="Trajectory_Examples\Battus_belusbutterfly.gif" alt="Evolutionary Trajectory 2">
+    <img src="Trajectory_Examples\Battus_belus_tree.gif" alt="Evolutionary Trajectory 1" style="margin-right: 10px;" width="400">
+    <img src="Trajectory_Examples\Battus_belusbutterfly.gif" alt="Evolutionary Trajectory 2" width="400">
 </div>
 
 ## Introduction 
