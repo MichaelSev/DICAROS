@@ -1,4 +1,4 @@
-# DICRAOS
+# DICAROS
 DICAROS (Diffeomorphic Independent Contrasts for Ancestral Reconstruction of Shapes)
 
 DOI: tbd
