@@ -1,7 +1,7 @@
 # DICAROS
 DICAROS (Diffeomorphic Independent Contrasts for Ancestral Reconstruction of Shapes)
 
-DOI: tbd
+DOI: https://doi.org/10.1093/sysbio/syag019
 
 ## Examples
 
@@ -61,7 +61,7 @@ Output examples are shown in the `output_examples` folder.
 
 ## Citation 
 
-DOI: tbd
+DOI: https://doi.org/10.1093/sysbio/syag019
 
 ## Contact
 If you experience problems or have technical questions, please contact [Michael Severinsen](mailto:michael@mail-lind.dk)
