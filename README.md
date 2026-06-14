@@ -1,67 +1,53 @@
-# DICAROS
-DICAROS (Diffeomorphic Independent Contrasts for Ancestral Reconstruction of Shapes)
+# DICAROS pipeline
 
-DOI: https://doi.org/10.1093/sysbio/syag019
+Ancestral landmark-shape reconstruction along a phylogenetic tree using a
+Riemannian (LDDMM-style) shape-fusion algorithm. The pipeline takes raw
+specimen landmarks + a species tree, computes species mean shapes via GPA,
+and uses Hamiltonian-flow landmark dynamics to recursively fuse children
+back to their ancestor.
 
-## Examples
+## Contents
 
-Here are some examples of evolutionary trajectories reconstructed using DICAROS:
+```
+DICAROS_pipline.ipynb       2D pipeline (this is the primary entry point)
+DICAROS_pipline_3d.ipynb    3D variant
+help_functions/
+  align_functions.py        full GPA + anchor-based Procrustes alignment
+  mean_estimator.py         Euclidean (non-Frechet) per-species mean shape
+  mean_estimator_Frechet.py Riemannian Frechet mean (slower, geodesic-correct)
+  shape_reconstruction.py   the core DICAROS fuse + tree initialisation
+start_data/                 sample input: male butterfly landmarks + tree
+reconstructed/              sample output of running the notebook on start_data
+```
 
-<div style="display: flex; justify-content: center;">
-    <img src="Trajectory_Examples\Battus_belus_tree.gif" alt="Evolutionary Trajectory 1" style="margin-right: 10px;" width="400">
-    <img src="Trajectory_Examples\Battus_belusbutterfly.gif" alt="Evolutionary Trajectory 2" width="400">
-</div>
+## Quick start
 
-<div style="display: flex; justify-content: center;">
-    <img src="Trajectory_Examples\Papilio_gigon_tree.gif" alt="Evolutionary Trajectory 1" style="margin-right: 10px;" width="400">
-    <img src="Trajectory_Examples\Papilio_gigonbutterfly.gif" alt="Evolutionary Trajectory 2" width="400">
-</div>
+```bash
+pip install plotly hyperiax jaxdifferentialgeometry  # or as a one-liner; see notebook cell 1
+jupyter notebook DICAROS_pipline.ipynb
+```
 
+The notebook is configured to read from `./start_data` and write to
+`./reconstructed`, so it works out of the box on the bundled sample.
 
-The tree used, is a subsample from Kawahara et. al. 2023 (https://www.nature.com/articles/s41559-023-02041-9), 
+## Pipeline outline
 
-## Introduction 
+1. **Per-species mean shape** — `make_species_mean_common` (Euclidean) or
+   `make_species_frechet_mean_common` (Riemannian); GPA aligns specimens per
+   species, then aligns species means to a common frame.
+2. **Tree initialisation** — `tree_initialization` attaches each species'
+   mean shape to its tip in the `hyperiax` tree.
+3. **Edge-length correction** — `fuse_edgelength` adjusts internal-node
+   branch lengths.
+4. **DICAROS reconstruction** — `fuse_DICAROS` computes the ancestral shape
+   at each internal node from its two children's shapes using
+   Hamiltonian-flow dynamics on the landmark manifold (jaxgeometry).
+5. **Output** — reconstructed shapes for every node (tips + internals) plus
+   the renamed-node tree.
 
-This repository contains the code for the paper "DICAROS: Diffeomorphic Independent Contrasts for Ancestral Reconstruction of Shapes".
-DICAROS is a method for reconstructing the ancestral shapes of a set of species using a set of leaf images. It is based off the Large Deformation Diffeomorphic Metric Mapping (LDDMM) to model smooth, invertible transformations between shapes while preserving the relationships between landmarks with Felsenstein's Independent Contrasts (IC) to iteratively reconstruct ancestral shapes along the branches of a phylogenetic tree. 
+## Anchor alignment vs full GPA
 
-## Dependencies
-
-- **Jax Geometry**: A library for differential geometry computations
-  - Repository: [jaxgeometry](https://github.com/ComputationalEvolutionaryMorphometry/jaxgeometry)
-  - Version: 0.9.4
-
-- **Hyperiax**: A library for differential geometry computations
-  - Repository: [hyperiax](https://github.com/ComputationalEvolutionaryMorphometry/hyperiax)
-  - Version: 1.0.1
-  - For this project, we used the version within this folder 
-
-## Installation
-
-1. Create and activate a conda environment:
-
-   ```bash
-   conda create -n DICAROS python=3.13
-   conda activate DICAROS
-   ```
-
-2. Install required packages:
-
-   ```bash
-   pip install jaxdifferentialgeometry==0.9.4
-   pip install pandas==2.2.3
-   pip install HeapDict==1.0.1
-   ```
-## Usage 
-
-See example in the `PhyloMorphoSpace.ipynb` file, to do root reconstruction and plot the PhyloMorphoSpace.
-
-For the evolutioanry trajectory, see the `image_evol.ipynb` file, to do the root reconstruction and plot the evolutionary trajectory for a leaf image and lift it to the root. 
-Output examples are shown in the `output_examples` folder. 
-
-## Citation 
-
-DOI: https://doi.org/10.1093/sysbio/syag019
-
-## Contact
-If you experience problems or have technical questions, please contact [Michael Severinsen](mailto:michael@mail-lind.dk)
+Set `idxs = None` in cell 4 to use full GPA on all landmarks (recommended for
+most use cases). Set `idxs = [list of landmark indices]` to use the
+anchor-based alignment via `align_species_landmarks_with_idx`, which fits the
+Procrustes transform from the listed anchors and applies it to the full shape.
