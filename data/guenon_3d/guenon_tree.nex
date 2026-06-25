@@ -1,0 +1,29 @@
+#NEXUS
+[created by the 10kTree Website - http://10kTrees.fas.harvard.edu]
+BEGIN TREES;
+translate
+1 Allenopithecus_nigroviridis,
+2 Cercopithecus_ascanius,
+3 Cercopithecus_campbelli,
+4 Cercopithecus_cephus,
+5 Cercopithecus_diana,
+6 Cercopithecus_erythrogaster,
+7 Cercopithecus_erythrotis,
+8 Cercopithecus_hamlyni,
+9 Cercopithecus_lhoesti,
+10 Cercopithecus_mitis,
+11 Cercopithecus_mona,
+12 Cercopithecus_neglectus,
+13 Cercopithecus_nictitans,
+14 Cercopithecus_petaurista,
+15 Cercopithecus_pogonias,
+16 Cercopithecus_preussi,
+17 Cercopithecus_solatus,
+18 Chlorocebus_aethiops,
+19 Erythrocebus_patas,
+20 Miopithecus_ogouensis,
+21 Cercocebus_atys,
+22 Colobus_guereza;
+tree consensus_22species = (((1:11.894902,(((((10:3.762640,13:3.762640):2.666569,((2:2.018943,(4:1.215847,7:1.215846):0.803097):0.712693,(6:1.347404,14:1.347404):1.384232):3.697573):1.461009,((((3:2.247911,11:2.247911):0.919265,15:3.167176):2.820105,(5:5.588511,12:5.588511):0.398770):1.355876,8:7.343158):0.547060):1.957908,((((9:2.759983,16:2.759983):1.323667,17:4.083650):3.856150,19:7.939800):0.687445,18:8.627244):1.220881):1.644988,20:11.493113):0.401789):2.980276,21:14.875179):6.535196,22:21.410374);
+END;<br />
+<b>Warning</b>:  session_write_close() expects exactly 0 parameters, 1 given in <b>/var/www/10ktrees.nunn-lab.org/sendTreesToUser.php</b> on line <b>98</b><br />

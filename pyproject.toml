@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dicaros"
+version = "0.1.0"
+description = "Ancestral shape reconstruction on phylogenies via DICAROS LDDMM landmark dynamics"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "Michael Lind Severinsen" },
+    { name = "Jacky Li" },
+]
+keywords = [
+    "geometric-morphometrics",
+    "phylogenetics",
+    "ancestral-reconstruction",
+    "LDDMM",
+    "landmarks",
+    "shape-analysis",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "jax",
+    "jaxlib",
+    "hyperiax>=3",
+    "jaxdifferentialgeometry",
+    "dendropy>=4.5",
+]
+
+[project.optional-dependencies]
+viz = ["matplotlib"]
+dev = ["pytest", "matplotlib"]
+# JAX installs a CPU-only wheel by default; opt in to the CUDA build for GPU.
+gpu = ["jax[cuda12]"]
+
+[project.urls]
+Homepage = "https://github.com/MichaelSev/DICAROS"
+Repository = "https://github.com/MichaelSev/DICAROS"
+
+[project.scripts]
+dicaros = "dicaros.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
