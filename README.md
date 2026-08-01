@@ -19,7 +19,7 @@ It works for **2D and 3D** landmark data, accepts **Newick or NEXUS** trees
 (including 10kTrees-style `translate` tables), and outputs the reconstructed
 shapes for all nodes plus the tree with internal nodes labelled.
 
-<img src="/examples/guenon_skull_trajectory.gif" alt="Demo GIF" width="600">
+<img src="/examples/guenon_skull_trajectory.gif" alt="Demo GIF">
 ---
 
 ## Installation
